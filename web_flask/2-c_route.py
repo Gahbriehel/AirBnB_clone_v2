@@ -1,7 +1,8 @@
 #!/usr/bin/python3
 """
-This module adds a new route to the flask app
-and returns HBNB
+This module creates a basic flask app that
+gets dynamic roure parameters and replaces
+'_' with ' '
 """
 from flask import Flask
 app = Flask(__name__)
@@ -15,6 +16,12 @@ def home():
 @app.route('/hbnb', strict_slashes=False)
 def hi():
     return "HBNB"
+
+
+@app.route('/c/<text>', strict_slashes=False)
+def c_route(text):
+    text = text.replace('_', ' ')
+    return f"C {text}"
 
 
 if __name__ == "__main__":
